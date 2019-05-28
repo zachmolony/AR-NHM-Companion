@@ -1,0 +1,20 @@
+.navigation-bar {
+    height: 12vh;
+}
+
+.page__content {
+    margin-top: 5vh;
+}
+
+.toolbar * {
+    height: 10vh;
+    width: auto;
+    padding-top: 0.5vh;
+    margin-left: 1vw;
+}
+
+.right * {
+    height: 8vh;
+    padding: 0px;
+    margin: 0px;
+}
