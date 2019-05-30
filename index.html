@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -15,12 +16,16 @@
 </head>
 
 <style>
+    * {
+        font-family: 'Source Sans Pro', sans-serif !important;
+    }
+
     .navigation-bar {
         height: 25vw;
     }
 
     .page__content {
-        margin-top: 10vh;
+        margin-top: 6vh;
     }
 
     #logo {
@@ -40,30 +45,105 @@
         width: auto;
         padding-top: 3vw;
     }
+
+    .toolbar-button--quiet {
+        display: none;
+    }
+
+    /* home */
+
+    .article {
+        margin-top: 3vw;
+    }
+
+    h1 {
+        padding-left: 2vw !important;
+        font-size: 22px !important;
+        color: white !important;
+    }
+
+    #headerImg {
+        max-width: 100vw;
+    }
+
+    #title {
+        margin-top: -20vw;
+    }
+
+    .artefacts {
+        margin-top: 10vw;
+    }
+
+    #aHeader {
+        font-size: 6vw;
+        padding-left: 2vw;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .container img {
+        max-width: 35vw;
+    }
 </style>
 
 <body>
     <script>
-        document.addEventListener('init', function (event) {
+        $('html').on('init', function (e) {
+
             var page = event.target;
 
-            if (page.id === 'home') {
-                page.querySelector('#push-button').onclick = function () {
-                    document.querySelector('#myNavigator').pushPage('page2.html', {
-                        data: {
-                            title: 'Page 2'
-                        }
+            if (page.id !== 'home') {
+                page.querySelector('#logo').onclick = function () {
+                    document.querySelector('#myNavigator').resetToPage('home', {
+                        animation: 'lift'
                     });
                 };
-            } else if (page.id === 'page2') {
-                page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+            }
+
+            if (page.id !== 'map') {
+                page.querySelector('#mapIcon').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('map', {
+                        animation: 'lift'
+                    });
+                };
+            }
+
+            if (page.id !== 'qr') {
+                page.querySelector('#scannerIcon').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('qr', {
+                        animation: 'lift'
+                    });
+                };
+            }
+
+            if (page.id === 'home') {
+                page.querySelector('#article-button').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('article', {
+                        data: {
+                            title: 'Page 2'
+                        },
+                        animation: 'slide'
+                    });
+                };
+                page.querySelector('#artefact-button').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('artefact', {
+                        data: {
+                            title: 'Page 2'
+                        },
+                        animation: 'slide'
+                    });
+                };
+            } else if (page.id === 'artefact') {
+
             }
         });
     </script>
 
-    <ons-navigator swipeable id="myNavigator" page="home.html"></ons-navigator>
+    <ons-navigator swipeable id="myNavigator" page="home"></ons-navigator>
 
-    <template id="home.html">
+    <template id="home">
         <ons-page id="home">
             <ons-toolbar id="toolbar" class="navigation-bar">
                 <div class="left"><img src="./assets/NHMlogo.gif" alt="" id="logo"></div>
@@ -75,26 +155,102 @@
                 </div>
             </ons-toolbar>
 
-            <p>Home page</p>
+            <div class="article" id="article-button">
+                <img id="headerImg" src="./assets/lions.jpg" alt="lions">
+                <h1 id="title">Frans Lanting: a remarkable career looking nature in the eye</h1>
+            </div>
 
-            <ons-button id="push-button">Push page</ons-button>
+            <div class="artefacts">
+                <h2 id="aHeader">Things to see...</h2>
+
+                <div class="container">
+                    <ons-card id="artefact-button">
+                        <img src="./assets/turtle.png" alt="Sea Turtle">
+                        <div class="title">Sea Turtle</div>
+                    </ons-card>
+                    <ons-card>
+                        <img src="./assets/sloth.png" alt="Giant Ground Sloth">
+                        <div class="title">Giant Ground Sloth</div>
+                    </ons-card>
+                </div>
+
+            </div>
 
         </ons-page>
     </template>
 
-    <template id="page2.html">
-        <ons-page id="page2">
-            <ons-toolbar class="navigation-bar">
+    <template id="artefact">
+        <ons-page id="artefact">
+            <ons-toolbar id="toolbar" class="navigation-bar">
                 <div class="left">
-                    <ons-back-button>Page 1</ons-back-button>
+                    <img src="./assets/NHMlogo.gif" alt="" id="logo">
                 </div>
-                <div class="right"></div>
-                <div class="right"></div>
+                <div class="right" id="buttons">
+                    <ons-toolbar-button><img src="./assets/qrscanner.png" alt="" id="scannerIcon"
+                            style="margin-right:-2vw;"></ons-toolbar-button>
+                    <ons-toolbar-button><img src="./assets/map.png" alt="" id="mapIcon" style="width:;">
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+
+            <p>Sea Turtle</p>
+        </ons-page>
+    </template>
+
+    <template id="article">
+        <ons-page id="article">
+            <ons-toolbar id="toolbar" class="navigation-bar">
+                <div class="left">
+                    <img src="./assets/NHMlogo.gif" alt="" id="logo">
+                </div>
+                <div class="right" id="buttons">
+                    <ons-toolbar-button><img src="./assets/qrscanner.png" alt="" id="scannerIcon"
+                            style="margin-right:-2vw;"></ons-toolbar-button>
+                    <ons-toolbar-button><img src="./assets/map.png" alt="" id="mapIcon" style="width:;">
+                    </ons-toolbar-button>
+                </div>
             </ons-toolbar>
 
             <p>This is the second page.</p>
         </ons-page>
     </template>
+
+    <template id="qr">
+        <ons-page id="qrPage">
+            <ons-toolbar id="toolbar" class="navigation-bar">
+                <div class="left">
+                    <img src="./assets/NHMlogo.gif" alt="" id="logo">
+                </div>
+                <div class="right" id="buttons">
+                    <ons-toolbar-button><img src="./assets/qrscanner.png" alt="" id="scannerIcon"
+                            style="margin-right:-2vw;"></ons-toolbar-button>
+                    <ons-toolbar-button><img src="./assets/map.png" alt="" id="mapIcon" style="width:;">
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+
+            <p>QR Scanner</p>
+        </ons-page>
+    </template>
+
+    <template id="map">
+        <ons-page id="mapPage">
+            <ons-toolbar id="toolbar" class="navigation-bar">
+                <div class="left">
+                    <img src="./assets/NHMlogo.gif" alt="" id="logo">
+                </div>
+                <div class="right" id="buttons">
+                    <ons-toolbar-button><img src="./assets/qrscanner.png" alt="" id="scannerIcon"
+                            style="margin-right:-2vw;"></ons-toolbar-button>
+                    <ons-toolbar-button><img src="./assets/map.png" alt="" id="mapIcon" style="width:;">
+                    </ons-toolbar-button>
+                </div>
+            </ons-toolbar>
+
+            <p>Map</p>
+        </ons-page>
+    </template>
+
 </body>
 
 </html>
