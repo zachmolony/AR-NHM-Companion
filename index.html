@@ -77,12 +77,13 @@
     }
 
     .artefacts {
-        margin-top: 10vw;
+        margin-top: 7vw;
     }
 
     #aHeader {
         font-size: 6vw;
         padding-left: 2vw;
+        margin-bottom: -0.5vw;
     }
 
     .artefact-carousel {
@@ -95,8 +96,12 @@
 
     .artefact-carousel-cell {
         max-width: 40vw;
-        margin-left: 5vw;
+        margin-left: 2vw;
         height: 40vh;
+    }
+
+    .artefact-carousel-cell * {
+        font-size: 4vw;
     }
 
     /* artefact */
@@ -204,6 +209,12 @@
         padding-right: 10vw;
         text-align: center;
     }
+
+    /* MAP */ 
+
+    .map-content img {
+        width: 100vw;
+    }
 </style>
 
 <body>
@@ -294,14 +305,14 @@
                     </div>
                     <div class="artefact-carousel-cell">
                         <ons-card id="artefact-button">
-                            <img src="./assets/sloth.png" alt="Giant Ground Sloth">
-                            <div class="title">Giant Ground Sloth</div>
+                            <img src="./assets/whale.png" alt="Blue Whale">
+                            <div class="title">Blue Whale</div>
                         </ons-card>
                     </div>
                     <div class="artefact-carousel-cell">
                         <ons-card id="artefact-button">
-                            <img src="./assets/whale.png" alt="Blue Whale">
-                            <div class="title">Blue Whale</div>
+                            <img src="./assets/sloth.png" alt="Giant Ground Sloth">
+                            <div class="title">Giant Ground Sloth</div>
                         </ons-card>
                     </div>
                     <div class="artefact-carousel-cell">
@@ -452,7 +463,9 @@
                 </div>
             </ons-toolbar>
 
-            <p>Map</p>
+            <div class="map-content">
+                <img src="./assets/goog.png" alt="" id="map-img">
+            </div>
         </ons-page>
     </template>
 
