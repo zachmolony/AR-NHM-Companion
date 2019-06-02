@@ -13,8 +13,6 @@
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-    <script src="https://aframe.io/releases/0.6.0/aframe.min.js"></script>
-    <script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
     <title>NHM App</title>
 </head>
 
@@ -153,6 +151,36 @@
         overflow: hidden;
         background-color: black;
     }
+
+    /* ARTICLE */
+
+    .gallery {
+        position: relative;
+        margin-top: 2vw;
+    }
+
+    .gallery-item {
+        width: 100vw;
+        height: 30vh;
+    }
+
+    .gallery-item img {
+        max-width: 100vw;
+    }
+
+    .a-content {
+        padding-top: 5vw !important;
+        padding: 2vw;
+    }
+
+    h4 {
+        font-size: 4vw !important;
+    }
+
+    h5 {
+        font-size: 5vw;
+        font-weight: 100 !important;
+    }
 </style>
 
 <body>
@@ -164,6 +192,11 @@
                 contain: true,
                 prevNextButtons: false,
                 pageDots: false
+            });
+
+            $('.gallery').flickity({
+                contain: true,
+                autoPlay: true
             });
 
             var page = event.target;
@@ -207,7 +240,7 @@
         });
     </script>
 
-    <ons-navigator swipeable id="myNavigator" page="artefact"></ons-navigator>
+    <ons-navigator swipeable id="myNavigator" page="article"></ons-navigator>
 
     <template id="home">
         <ons-page id="home">
@@ -304,25 +337,6 @@
         </ons-page>
     </template>
 
-    <template id="ar">
-
-        <ons-page id="ar">
-
-            <div class="ar-body" style="">
-                <a-scene embedded arjs>
-                    <!-- create your content here. just a box for now -->
-                    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-                    <!-- define a camera which will move according to the marker position -->
-                    <a-marker-camera preset='hiro'></a-marker-camera>
-                </a-scene>
-            </div>
-
-
-
-
-        </ons-page>
-    </template>
-
     <template id="article">
         <ons-page id="article">
             <ons-toolbar id="toolbar" class="navigation-bar">
@@ -337,7 +351,46 @@
                 </div>
             </ons-toolbar>
 
-            <p>This is the second page.</p>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img id="" src="./assets/lions.jpg" alt="lions">
+                </div>
+                <div class="gallery-item">
+                    <img id="" src="./assets/Frans1.jpg" alt="lions">
+                </div>
+                <div class="gallery-item">
+                    <img id="" src="./assets/Frans2.jpg" alt="lions">
+                </div>
+                <div class="gallery-item">
+                    <img id="" src="./assets/Frans3.jpg" alt="lions">
+                </div>
+                <div class="gallery-item">
+                    <img id="" src="./assets/Frans4.jpg" alt="lions">
+                </div>
+                <div class="gallery-item">
+                    <img id="" src="./assets/Frans5.jpg" alt="lions">
+                </div>
+            </div>
+
+            <div class="a-content">
+                <h2 id="a-head">Frans Lanting: a remarkable career looking nature in the eye</h2>
+                <h4>By Paul Teasdale <br>First published 24 May 2019</h4>
+                <h5>After 54 years as the home of nature photography, Wildlife Photographer of the Year recently
+                    honoured master photographer, Frans Lanting, with the competition's inaugural Lifetime Achievement
+                    Award. </h5> <h5> Frans, the 1991 grand title winner, was recognised for his outstanding contribution to
+                    wildlife conservation over more than three decades.</h5>
+                <p>Presenting the award at the Museum in October 2018, acclaimed photo editor Ruth Eichhorn described
+                    Frans as, 'an exceptional artist, and without any doubt a master - the man who gave us visual proof
+                    that animals are all very different individuals, who should be respected and recognized as such.'
+                    <br> It is this characteristic empathy, his groundbreaking eye-level perspective and unique ability
+                    to capture the inner-life of his subjects that has won Frans so many accolades in his extraordinary
+                    career. He says, 'It's a wonderful honour to be recognised in front of so many peers, colleagues and
+                    friends, not to mention all these brilliant young photographers. It's quite special.'</p>
+                <h5>Finding focus</h5>
+                <p> Frans started taking photographs in his student days. He says, 'I started doing wildlife photography
+                    as a hobby initially. 'I was studying to become an economist and I would sneak away to a nearby city
+                    park next to the university, and I would lose myself in the patterns of nature.</p>
+            </div>
         </ons-page>
     </template>
 
