@@ -28,7 +28,7 @@
     }
 
     .navigation-bar {
-        height: 25vw;
+        height: 22vw;
         background-color: #7bc043;
     }
 
@@ -51,7 +51,7 @@
     #buttons * {
         height: 12vw;
         width: auto;
-        padding-top: 3vw;
+        padding-top: 2vw;
     }
 
     .toolbar-button--quiet {
@@ -114,7 +114,7 @@
         font-size: 10vw;
     }
 
-    #art-img {
+    #artefact-img {
         width: 85vw;
     }
 
@@ -125,10 +125,12 @@
 
     /* AR */
 
-    #ascene {
-        z-index: -1;
-        margin-top: 10vh;
-        max-width: 100vw;
+    #ar-body {
+        display: block;
+        min-height: 75vh;
+        min-width: 100vw;
+        overflow: hidden;
+        background-color: black;
     }
 </style>
 
@@ -172,27 +174,25 @@
             if (page.id === 'home') {
                 page.querySelector('#article-button').onclick = function () {
                     document.querySelector('#myNavigator').pushPage('article', {
-                        data: {
-                            title: 'Page 2'
-                        },
                         animation: 'slide'
                     });
                 };
                 page.querySelector('#artefact-button').onclick = function () {
                     document.querySelector('#myNavigator').pushPage('artefact', {
-                        data: {
-                            title: 'Page 2'
-                        },
                         animation: 'slide'
                     });
                 };
             } else if (page.id === 'artefact') {
-
+                page.querySelector('#artefact-img').onclick = function () {
+                    document.querySelector('#myNavigator').pushPage('ar', {
+                        animation: 'slide'
+                    });
+                };
             }
         });
     </script>
 
-    <ons-navigator swipeable id="myNavigator" page="home"></ons-navigator>
+    <ons-navigator swipeable id="myNavigator" page="ar"></ons-navigator>
 
     <template id="home">
         <ons-page id="home">
@@ -266,7 +266,7 @@
             </ons-toolbar>
 
             <ons-card id="artefact-card">
-                <img src="./assets/turtle.png" alt="turtle" id="art-img">
+                <img src="./assets/turtle.png" alt="turtle" id="artefact-img">
                 <h3 id="artefact-heading">Sea Turtle</h3>
                 <p>For more than 100 million years sea turtles have covered vast distances across the world's oceans,
                     filling a vital role in the balance of marine habitats.</p>
@@ -284,6 +284,7 @@
 
     <template id="ar">
         <ons-page id="ar">
+
             <ons-toolbar id="toolbar" class="navigation-bar">
                 <div class="left">
                     <img src="./assets/NHMlogo.gif" alt="" id="logo">
@@ -295,14 +296,15 @@
                     </ons-toolbar-button>
                 </div>
             </ons-toolbar>
-            
-            <a-scene embedded arjs id="ascene">
-                <!-- create your content here. just a box for now -->
-                <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-                <!-- define a camera which will move according to the marker position -->
-                <a-marker-camera preset='hiro'></a-marker-camera>
-            </a-scene>
 
+            <div class="ar-body" style="background-color: black">
+                <a-scene embedded arjs>
+                    <!-- create your content here. just a box for now -->
+                    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+                    <!-- define a camera which will move according to the marker position -->
+                    <a-marker-camera preset='hiro'></a-marker-camera>
+                </a-scene>
+            </div>
         </ons-page>
     </template>
 
