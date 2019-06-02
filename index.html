@@ -97,7 +97,7 @@
 
     .artefact-carousel-cell {
         max-width: 40vw;
-        ;
+        margin-left: 5vw;
         height: 100%;
     }
 
@@ -127,7 +127,7 @@
 
     #ar {
         z-index: -1;
-        background-color: transparent !important;
+        background: none !important;
     }
 
     #ar-body {
@@ -198,7 +198,7 @@
         });
     </script>
 
-    <ons-navigator swipeable id="myNavigator" page="ar"></ons-navigator>
+    <ons-navigator swipeable id="myNavigator" page="home"></ons-navigator>
 
     <template id="home">
         <ons-page id="home">
@@ -277,6 +277,7 @@
                 <p>For more than 100 million years sea turtles have covered vast distances across the world's oceans,
                     filling a vital role in the balance of marine habitats.</p>
                 <img src="./assets/st_facts.png" alt="">
+                <a href="ar.html">dont click here lol</a>
                 <h3>Further reading</h3>
                 <a href="https://www.worldwildlife.org/species/sea-turtle">WWF - Sea Turtle<br></a><br>
                 <a href="https://www.seeturtles.org/sea-turtle-migration">seeTurtles - Sea Turtle Migration</a>
@@ -289,28 +290,21 @@
     </template>
 
     <template id="ar">
+        
         <ons-page id="ar">
 
-            <ons-toolbar id="toolbar" class="navigation-bar">
-                <div class="left">
-                    <img src="./assets/NHMlogo.gif" alt="" id="logo">
-                </div>
-                <div class="right" id="buttons">
-                    <ons-toolbar-button><img src="./assets/qrscanner.png" alt="" id="scannerIcon"
-                            style="margin-right:-2vw;"></ons-toolbar-button>
-                    <ons-toolbar-button><img src="./assets/map.png" alt="" id="mapIcon" style="width:;">
-                    </ons-toolbar-button>
-                </div>
-            </ons-toolbar>
+                <div class="ar-body" style="">
+                        <a-scene embedded arjs>
+                            <!-- create your content here. just a box for now -->
+                            <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+                            <!-- define a camera which will move according to the marker position -->
+                            <a-marker-camera preset='hiro'></a-marker-camera>
+                        </a-scene>
+                    </div>
 
-            <div class="ar-body" style="background-color: black">
-                <a-scene embedded arjs>
-                    <!-- create your content here. just a box for now -->
-                    <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
-                    <!-- define a camera which will move according to the marker position -->
-                    <a-marker-camera preset='hiro'></a-marker-camera>
-                </a-scene>
-            </div>
+
+
+            
         </ons-page>
     </template>
 
