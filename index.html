@@ -98,9 +98,14 @@
     .artefact-carousel-cell {
         max-width: 40vw;
         margin-left: 5vw;
+        height: 40vh;
     }
 
     /* artefact */
+
+    h3 {
+        font-weight: 600 !important;
+    }
 
     #artefact-card {
         max-width: 94vw;
@@ -111,10 +116,21 @@
 
     #artefact-heading {
         font-size: 10vw;
+        text-decoration: none;
     }
 
     #artefact-img {
+        margin-top: -4vh;
+        margin-bottom: -7vh;
         width: 85vw;
+    }
+
+    #ar-button {
+        position: absolute;
+        margin-top: -12vh;
+        margin-left: 65vw;
+        width: 18vw;
+        height: auto;
     }
 
     #video {
@@ -187,17 +203,11 @@
                         animation: 'slide'
                     });
                 };
-            } else if (page.id === 'artefact') {
-                page.querySelector('#artefact-img').onclick = function () {
-                    document.querySelector('#myNavigator').pushPage('ar', {
-                        animation: 'slide'
-                    });
-                };
             }
         });
     </script>
 
-    <ons-navigator swipeable id="myNavigator" page="home"></ons-navigator>
+    <ons-navigator swipeable id="myNavigator" page="artefact"></ons-navigator>
 
     <template id="home">
         <ons-page id="home">
@@ -279,10 +289,10 @@
             <ons-card id="artefact-card">
                 <img src="./assets/turtle.png" alt="turtle" id="artefact-img">
                 <h3 id="artefact-heading">Sea Turtle</h3>
+                <a href="ar.html"><img src="./assets/ar-icon.png" alt="augmented reality" id="ar-button"></a>
                 <p>For more than 100 million years sea turtles have covered vast distances across the world's oceans,
                     filling a vital role in the balance of marine habitats.</p>
-                <img src="./assets/st_facts.png" alt="">
-                <a href="ar.html">dont click here lol</a>
+                <img src="./assets/st_facts.png" alt="" style="width: 60vw">
                 <h3>Further reading</h3>
                 <a href="https://www.worldwildlife.org/species/sea-turtle">WWF - Sea Turtle<br></a><br>
                 <a href="https://www.seeturtles.org/sea-turtle-migration">seeTurtles - Sea Turtle Migration</a>
