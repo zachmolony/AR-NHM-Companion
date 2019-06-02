@@ -181,6 +181,29 @@
         font-size: 5vw;
         font-weight: 100 !important;
     }
+
+    /* QR */
+
+    .qr-content {
+        margin-top: 5vw;
+        width: 100vw;
+        height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .qr-content img {
+        width: 30vw;
+        height: auto;
+    }
+
+    .qr-content h5 {
+        padding-left: 10vw;
+        padding-right: 10vw;
+        text-align: center;
+    }
 </style>
 
 <body>
@@ -240,7 +263,7 @@
         });
     </script>
 
-    <ons-navigator swipeable id="myNavigator" page="article"></ons-navigator>
+    <ons-navigator swipeable id="myNavigator" page="qr"></ons-navigator>
 
     <template id="home">
         <ons-page id="home">
@@ -408,7 +431,10 @@
                 </div>
             </ons-toolbar>
 
-            <p>QR Scanner</p>
+            <div class="qr-content">
+                <img src="./assets/scanner.png" alt="scanner">
+                <h5>Please hold your camera over an NHM QR code.</h5>
+            </div>
         </ons-page>
     </template>
 
