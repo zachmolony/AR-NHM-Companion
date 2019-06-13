@@ -132,9 +132,17 @@
 
     #ar-button {
         position: absolute;
-        margin-top: -13vh;
-        margin-left: 65vw;
-        width: 18vw;
+        margin-top: -10.5vh;
+        margin-left: 70vw;
+        width: 11vw;
+        height: auto;
+    }
+
+    .locate-img {
+        position: absolute;
+        margin-top: -10.5vh;
+        margin-left: 74vw;
+        width: 11vw;
         height: auto;
     }
 
@@ -220,63 +228,8 @@
 </style>
 
 <body>
-    <script>
-        $('html').on('init', function (e) {
-
-            $('.artefact-carousel').flickity({
-                freeScroll: true,
-                contain: true,
-                prevNextButtons: false,
-                pageDots: false
-            });
-
-            $('.gallery').flickity({
-                contain: true,
-                autoPlay: true
-            });
-
-            var page = event.target;
-
-            if (page.id !== 'home') {
-                page.querySelector('#logo').onclick = function () {
-                    document.querySelector('#myNavigator').resetToPage('home', {
-                        animation: 'lift'
-                    });
-                };
-            }
-
-            if (page.id !== 'map') {
-                page.querySelector('#mapIcon').onclick = function () {
-                    document.querySelector('#myNavigator').pushPage('map', {
-                        animation: 'lift'
-                    });
-                };
-            }
-
-            if (page.id !== 'qr') {
-                page.querySelector('#scannerIcon').onclick = function () {
-                    document.querySelector('#myNavigator').pushPage('qr', {
-                        animation: 'lift'
-                    });
-                };
-            }
-
-            if (page.id === 'home') {
-                page.querySelector('#article-button').onclick = function () {
-                    document.querySelector('#myNavigator').pushPage('article', {
-                        animation: 'slide'
-                    });
-                };
-                page.querySelector('#artefact-button').onclick = function () {
-                    document.querySelector('#myNavigator').pushPage('artefact', {
-                        animation: 'slide'
-                    });
-                };
-            }
-        });
-    </script>
-
-    <ons-navigator swipeable id="myNavigator" page="home"></ons-navigator>
+    <script src="./main.js"></script>
+    <ons-navigator swipeable id="myNavigator" page="artefact"></ons-navigator>
 
     <template id="home">
         <ons-page id="home">
@@ -359,6 +312,7 @@
                 <img src="./assets/turtle.png" alt="turtle" id="artefact-img">
                 <h3 id="artefact-heading">Sea Turtle</h3>
                 <a href="ar.html"><img src="./assets/ar-icon.png" alt="augmented reality" id="ar-button"></a>
+                <img src="./assets/map.png" alt="" id="mapIcon" class="locate-img">
                 <p>For more than 100 million years sea turtles have covered vast distances across the world's oceans,
                     filling a vital role in the balance of marine habitats.</p>
                 <img src="./assets/st_facts.png" alt="" style="width: 60vw">
